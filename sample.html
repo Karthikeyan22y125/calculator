@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Text Boxes</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Generate Text Boxes</h2>
+        <div class="input-box">
+            <input type="number" id="numBoxes" placeholder="Enter number of text boxes" min="1">
+        </div>
+        <button class="button" onclick="generateTextBoxes()">Generate</button>
+        <div id="generatedInputs" class="generated-inputs"></div>
+    </div>
+
+    <script>
+        function generateTextBoxes() {
+            const numBoxes = parseInt(document.getElementById('numBoxes').value);
+            const container = document.getElementById('generatedInputs');
+            container.innerHTML = ''; // Clear any existing text boxes
+
+            if (isNaN(numBoxes) || numBoxes < 1) {
+                alert('Please enter a valid number greater than 0.');
+                return;
+            }
+
+            // Dynamically create the specified number of input boxes
+            for (let i = 1; i <= numBoxes; i++) {
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.placeholder = `Enter number ${i}`;
+                container.appendChild(input);
+            }
+        }
+    </script>
+</body>
+</html>
